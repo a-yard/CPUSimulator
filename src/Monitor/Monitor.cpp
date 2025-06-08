@@ -11,7 +11,7 @@ Monitor::Monitor(int argc, char *argv[],ISA * InCPU){
     this->sdbObj = new sdb(SOCObj->BUSObj,SOCObj->CPUObj);
     
     this->welcome();
-    this->sdbObj->sdb_mainloop();
+    // this->sdbObj->sdb_mainloop();
 }
 
 int Monitor::is_exit_status_bad() {

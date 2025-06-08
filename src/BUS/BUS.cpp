@@ -12,7 +12,6 @@ BUS::BUS( char * img_file,char * dtb_file)
 
 Word_t BUS::BUSRead(VAddr_t RAddr, int len)
 {
-
     BUSLEAFNODEREAD(Memory);
     BUSLEAFNODEREAD(UART);
     BUSLEAFNODEREAD(MROM);

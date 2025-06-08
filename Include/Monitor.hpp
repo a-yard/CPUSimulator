@@ -19,11 +19,12 @@ private:
     char *diff_so_file=NULL;
     char * dtb_file=NULL;
     char * Kernal_file=NULL;
-    sdb *sdbObj;
+    
     WEMUState *WEMUStateObj;
 
 public:
     SOC *SOCObj;
+    sdb *sdbObj;
     Monitor(int argc, char *argv[],ISA * InCPU);
     ~Monitor();
     int is_exit_status_bad();
