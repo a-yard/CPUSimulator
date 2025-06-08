@@ -1,0 +1,93 @@
+menu "Drvice"
+
+menu Memory
+config SELECT_CONFIG_MBASE            # 填空
+    hex "Memory BASE"                       # 填空的题干
+    default 0x80000000                             # 默认填空答案
+config SELECT_CONFIG_MEMORY_SIZE            # 填空
+    hex "Memory size"                       
+    default 0x10000000                             
+endmenu
+
+menu Flash
+config SELECT_CONFIG_FLASH_BASE            
+    hex "Flash BASE"                       
+    default 0x30000000   
+config SELECT_CONFIG_FLASH_SIZE           
+    hex "Flash size"                       
+    default 0x10000000                             
+endmenu
+
+menu SRAM
+config SELECT_CONFIG_SRAM_BASE            
+    hex "SRAM BASE"                       
+    default 0x0f000000   
+config SELECT_CONFIG_SRAM_SIZE           
+    hex "SRAM size"                       
+    default 0x01000000                             
+endmenu
+
+menu MROM
+config SELECT_CONFIG_MROM_BASE            
+    hex "MROM BASE"                       
+    default 0x20000000  
+config SELECT_CONFIG_MROM_SIZE           
+    hex "MROM size"                       
+    default 0x1000                           
+endmenu
+
+menu UART
+config SELECT_CONFIG_UART_BASE            
+    hex "UART BASE"                       
+    default 0x10000000   
+config SELECT_CONFIG_UART_SIZE           
+    hex "UART size"                       
+    default 0x1000                             
+endmenu
+
+menu CLINT
+config SELECT_CONFIG_CLINT_BASE            
+    hex "CLINT BASE"                       
+    default 0x02000000   
+config SELECT_CONFIG_CLINT_SIZE           
+    hex "CLINT size"                       
+    default 0x10000                             
+endmenu
+
+endmenu
+
+menu WEMU
+config SELECT_CONFIG_PC_INIT
+    hex "PC init value"                       
+    default 0x80000000   
+config SELECT_CONFIG_DEVICETREEADDR
+    hex "Device Tree addr"                       
+    default 0x20000000
+
+
+config SELECT_CONFIG_HART_ID
+    hex "select Hart ID"                       
+    default 0x0
+
+
+choice SELECT_START_MODE                      
+    prompt "Select start mode"                
+    default SELECT_START_MODE_M                     
+ 
+config SELECT_START_MODE_M                      
+    bool "M"
+config SELECT_START_MODE_S                      
+    bool "S"
+config SELECT_START_MODE_U                      
+    bool "U"
+
+endchoice
+
+endmenu
+
+menu Debug
+config PRINTF_EXEC_INSTR_COUNT     
+    bool "printf exec instr count"          
+    default n
+ 
+endmenu

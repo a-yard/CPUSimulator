@@ -1,0 +1,17 @@
+// Auto Create
+#define Memory_SIZE  0x10000000
+#define Memory_BASE  0x80000000
+#define SRAM_SIZE  0x01000000
+#define SRAM_BASE  0x0f000000
+#define FLASH_SIZE  0x10000000
+#define FLASH_BASE  0x30000000
+#define MROM_SIZE  0x1000
+#define MROM_BASE  0x20000000
+#define UART_SIZE  0x1000
+#define UART_BASE  0x10000000
+#define CLINT_SIZE  0x10000
+#define CLINT_BASE  0x02000000
+#define RESET_VECTOR  0x80000000
+#define DEVICE_TREE_ADDR  0x20000000
+#define HART_ID  0x0
+#define START_MODE_M
