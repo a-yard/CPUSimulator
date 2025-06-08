@@ -10,6 +10,7 @@
 #include <sys/time.h>
 #include <vector>
 #include <stdlib.h>
+#include "macro.h"
 typedef uint32_t VAddr_t;
 typedef uint32_t Word_t;
 

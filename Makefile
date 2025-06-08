@@ -1,23 +1,23 @@
-wemu_HOME = /home/wsp/StartLinux/wemu
-C_SRC = $(wemu_HOME)/wemu_main.cpp \
-		$(wemu_HOME)/src/BUS/BUS.cpp \
-		$(wemu_HOME)/src/CPU/CPU.cpp \
-		$(wemu_HOME)/src/CPU/ISA/riscv32/riscv32.cpp \
-		$(wemu_HOME)/src/CPU/ISA/ISA.cpp \
-		$(wemu_HOME)/src/CPU/ISA/DiffTestDut.cpp \
-		$(wemu_HOME)/src/Monitor/Monitor.cpp \
-		$(wemu_HOME)/src/Monitor/sdb/sdb.cpp \
-		$(wemu_HOME)/src/Monitor/sdb/expr.cpp \
-		$(wemu_HOME)/src/Monitor/sdb/watchpoint.cpp \
-		$(wemu_HOME)/src/SOC/SOC.cpp \
-		$(wemu_HOME)/src/Drvice/Memory.cpp \
-		$(wemu_HOME)/src/Drvice/BlockDevice.cpp \
-		$(wemu_HOME)/src/Drvice/CharacterDevice.cpp \
-		$(wemu_HOME)/src/Drvice/Flash.cpp \
-		$(wemu_HOME)/src/Drvice/SRAM.cpp \
-		$(wemu_HOME)/src/Drvice/MROM.cpp \
-		$(wemu_HOME)/src/Drvice/UART.cpp \
-		$(wemu_HOME)/src/Drvice/CLINT.cpp \
+CPUSimulator_HOME = .
+C_SRC = $(CPUSimulator_HOME)/wemu_main.cpp \
+		$(CPUSimulator_HOME)/src/BUS/BUS.cpp \
+		$(CPUSimulator_HOME)/src/CPU/CPU.cpp \
+		$(CPUSimulator_HOME)/src/CPU/ISA/riscv32/riscv32.cpp \
+		$(CPUSimulator_HOME)/src/CPU/ISA/ISA.cpp \
+		$(CPUSimulator_HOME)/src/CPU/ISA/DiffTestDut.cpp \
+		$(CPUSimulator_HOME)/src/Monitor/Monitor.cpp \
+		$(CPUSimulator_HOME)/src/Monitor/sdb/sdb.cpp \
+		$(CPUSimulator_HOME)/src/Monitor/sdb/expr.cpp \
+		$(CPUSimulator_HOME)/src/Monitor/sdb/watchpoint.cpp \
+		$(CPUSimulator_HOME)/src/SOC/SOC.cpp \
+		$(CPUSimulator_HOME)/src/Drvice/Memory.cpp \
+		$(CPUSimulator_HOME)/src/Drvice/BlockDevice.cpp \
+		$(CPUSimulator_HOME)/src/Drvice/CharacterDevice.cpp \
+		$(CPUSimulator_HOME)/src/Drvice/Flash.cpp \
+		$(CPUSimulator_HOME)/src/Drvice/SRAM.cpp \
+		$(CPUSimulator_HOME)/src/Drvice/MROM.cpp \
+		$(CPUSimulator_HOME)/src/Drvice/UART.cpp \
+		$(CPUSimulator_HOME)/src/Drvice/CLINT.cpp \
 
 LIBS  += -lreadline -lhistory
 
@@ -32,7 +32,7 @@ GetColCount:
 	@find . -type f \( -name "*.cpp" -o -name "*.hpp"  -o -name "*.h" -o -name "*.c" \) -exec cat {} + | wc -l
 
 CreateExec:compileDeviceTree
-	@g++ -w  $(C_SRC) -o $(wemu_HOME)/build/wemu $(LIBS)
+	@g++ -w  $(C_SRC) -o $(CPUSimulator_HOME)/build/wemu $(LIBS)
 compileDeviceTree:
 	@dtc -I dts -O dtb -o ./build/HaiTang.dtb ./DeviceTree/HaiTang.dts
 run:CreateExec
@@ -43,7 +43,7 @@ getTest:
 	echo $(rv32uiPTests)
 
 runOpenSpi: CreateExec compileDeviceTree
-	@./build/wemu  -t ./build/HaiTang.dtb    $(wemu_HOME)/build/fw_jump.bin
+	@./build/wemu  -t ./build/HaiTang.dtb    $(CPUSimulator_HOME)/build/fw_jump.bin
 
 
 makeOpenSBI:
@@ -54,7 +54,7 @@ makeOpenSBI:
 	
 
 rundlimage: CreateExec
-	@./build/wemu -b -t ./build/HaiTang.dtb    $(wemu_HOME)/build/DownloadedImage
+	@./build/wemu -b -t ./build/HaiTang.dtb    $(CPUSimulator_HOME)/build/DownloadedImage
 
 runtest:CreateExec
 	cp ./test/$(name).dump .
