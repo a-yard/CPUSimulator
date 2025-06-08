@@ -14,11 +14,11 @@
 class Monitor
 {
 private:
-    char *img_file;
-    char *elf_file;
-    char *diff_so_file;
-    char * dtb_file;
-    char * Kernal_file;
+    char *img_file=NULL;
+    char *elf_file=NULL;
+    char *diff_so_file=NULL;
+    char * dtb_file=NULL;
+    char * Kernal_file=NULL;
     sdb *sdbObj;
     WEMUState *WEMUStateObj;
 

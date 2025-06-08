@@ -1,11 +1,15 @@
 #include "../../Include/Monitor.hpp"
 Monitor::Monitor(int argc, char *argv[],ISA * InCPU){
+    
     this->parse_args(argc,argv);
-    printf("%s\n\n",this->dtb_file);
-    this->WEMUStateObj = new WEMUState();
 
+    
+    this->WEMUStateObj = new WEMUState();
+    
     this->SOCObj = new SOC(WEMUStateObj,this->img_file,this->dtb_file,InCPU);
+    
     this->sdbObj = new sdb(SOCObj->BUSObj,SOCObj->CPUObj);
+    
     this->welcome();
     this->sdbObj->sdb_mainloop();
 }
@@ -63,6 +67,6 @@ int Monitor::parse_args(int argc, char *argv[])
   }
 
   void Monitor::welcome(){
-    printf("\033[0m\033[1;32m%s\033[0m", "Welcome to riscv32e-wemu!\n");
+    printf("\033[0m\033[1;32m%s\033[0m", "Welcome to CPUSimulator\n");
     printf("\033[0m\033[1;32m%s\033[0m","For help, type \"help\"\n\n");
 }

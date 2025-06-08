@@ -49,10 +49,12 @@ void BlockDevice::out_of_bound(uint32_t addr){
 }
 
 void BlockDevice::load_img(char* ImgFile){
+    
     if (ImgFile == NULL) {
         this->img_size= 4096; // built-in image size
         return;
       }
+      
       FILE *fp = fopen(ImgFile, "rb");
     
       fseek(fp, 0, SEEK_END);

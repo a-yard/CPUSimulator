@@ -2,8 +2,10 @@
 
 BUS::BUS( char * img_file,char * dtb_file)
 {
+    
     this->MemoryObj = new Memory(img_file);
     this->UARTObj = new UART();
+    
     this->MROMObj = new MROM(dtb_file);
     this->CLINTObj = new CLINT();
 }
