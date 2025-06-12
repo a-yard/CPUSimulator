@@ -9,7 +9,7 @@ char *sdb::rl_gets()
     line_read = NULL;
   }
 
-  line_read = readline("wemu> ");
+  line_read = readline("CPUSimulator> ");
 
   if (line_read && *line_read)
   {

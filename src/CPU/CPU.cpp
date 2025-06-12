@@ -28,15 +28,13 @@ void CPU::cpu_exec(uint64_t n)
         default: WEMUStateObj->state = WEMU_RUNNING;
       }
     execute(n);
-    this->WEMUStateObj->halt_ret = this->ISAObj->Get_gpr(3);
-    this->WEMUStateObj->halt_pc = this->ISAObj->Get_PC();
     switch (WEMUStateObj->state) {
         case WEMU_RUNNING: WEMUStateObj->state = WEMU_STOP; break;
     
         case WEMU_END: case WEMU_ABORT:
-          printf("WEMU: %s at pc = %x\n" ,
+          printf("CPUSimulator: %s at pc = %x\n" ,
               (WEMUStateObj->state == WEMU_ABORT ? ANSI_FMT("ABORT", ANSI_FG_RED) :
-               (WEMUStateObj->halt_ret == 1 ? ANSI_FMT("HIT GOOD TRAP", ANSI_FG_GREEN) :
+               (WEMUStateObj->halt_ret == 0 ? ANSI_FMT("HIT GOOD TRAP", ANSI_FG_GREEN) :
                 ANSI_FMT("HIT BAD TRAP", ANSI_FG_RED))),
                 WEMUStateObj->halt_pc);
           

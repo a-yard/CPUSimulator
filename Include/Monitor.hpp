@@ -20,11 +20,12 @@ private:
     char * dtb_file=NULL;
     char * Kernal_file=NULL;
     
-    WEMUState *WEMUStateObj;
+    // WEMUState *WEMUStateObj;
 
 public:
     SOC *SOCObj;
     sdb *sdbObj;
+    WEMUState *WEMUStateObj;
     Monitor(int argc, char *argv[],ISA * InCPU);
     ~Monitor();
     int is_exit_status_bad();
